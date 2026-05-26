@@ -49,7 +49,7 @@ Para controlar con precisión la inicialización y el retorno de los valores en 
 
 ---
 
-## 3. Cláusula `threadprivate`
+## 3. Directiva `threadprivate`
 
 A diferencia de las anteriores, que actúan sobre regiones paralelas específicas, `threadprivate` se aplica a variables **globales o estáticas**.
 
