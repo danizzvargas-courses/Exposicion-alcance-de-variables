@@ -61,6 +61,15 @@ clang -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include \
 OMP_NUM_THREADS=4 ./ThreadPrivate
 ```
 
+### GitHub Codespace / Linux
+
+```bash
+# Compilar y correr cada implementación
+gcc -fopenmp src/ThreadPrivate.c -o ThreadPrivate && ./ThreadPrivate
+gcc -fopenmp src/FirstPrivate.c -o FirstPrivate && ./FirstPrivate
+gcc -fopenmp src/LastPrivate.c -o LastPrivate && ./LastPrivate
+```
+
 ## OpenMP — conceptos del proyecto
 
 | Cláusula/Directiva | Tipo | Inicialización | Persiste entre regiones |
