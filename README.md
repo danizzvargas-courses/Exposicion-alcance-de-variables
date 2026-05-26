@@ -76,11 +76,11 @@ A diferencia de las anteriores, que actúan sobre regiones paralelas específica
 ### LastPrivate
 1. Directiva 
 #pragma omp parallel for
-- La directiva le dice al compilador que el bucle for que sigue debe dividirse entre los hilos disponibles en el sistema. 
+ - La directiva le dice al compilador que el bucle for que sigue debe dividirse entre los hilos disponibles en el sistema. 
 
 2. Cláusula 
 lastprivate(last)
-  - Aislamiento: Crea una copia local de last para cada hilo, esto evita una condición de carrera, donde varios hilos intentarían escribir en la misma memoria al mismo tiempo.
+ - Aislamiento: Crea una copia local de last para cada hilo, esto evita una condición de carrera, donde varios hilos intentarían escribir en la misma memoria al mismo tiempo.
   - Sincronización final: A diferencia de una variable private normal (que se destruye al terminar), lastprivate toma el valor del hilo que ejecutó la última iteración lógica y lo copia de vuelta a la variable original del main. 
 
 3. Funciones de la Librería
