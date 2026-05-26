@@ -73,29 +73,47 @@ A diferencia de las anteriores, que actúan sobre regiones paralelas específica
 ---
 
 ## Implementación
+
 ### LastPrivate
-1. Directiva 
+
+1. Directiva
+   
 #pragma omp parallel for
  - La directiva le dice al compilador que el bucle for que sigue debe dividirse entre los hilos disponibles en el sistema. 
 
-2. Cláusula 
+2. Cláusula
+   
 lastprivate(last)
  - Aislamiento: Crea una copia local de last para cada hilo, esto evita una condición de carrera, donde varios hilos intentarían escribir en la misma memoria al mismo tiempo.
   - Sincronización final: A diferencia de una variable private normal (que se destruye al terminar), lastprivate toma el valor del hilo que ejecutó la última iteración lógica y lo copia de vuelta a la variable original del main. 
 
 3. Funciones de la Librería
+   
 #include <omp.h>: Necesario para usar las funciones de OpenMP.
   - omp_get_thread_num(): Devuelve el identificador único del hilo que está ejecutando ese código en ese momento (ej. Hilo 0, Hilo 1, etc.).
 
 4. Flujo de ejecución
+ 
   - Fuera del bloque: last vale -1.
   - Dentro del bloque: Cada hilo trabaja con su propia versión de last, pero cada uno reporta su propio valor de i.
   - Salida del bloque: El sistema identifica qué hilo hizo i = 7 y "rescata" ese valor.
   - Final: El printf final muestra 7, confirmando que la comunicación entre el mundo paralelo y el secuencial fue exitosa.
 
+
+### FirstPrivate
+
+### Threadprivate
+
 ---
 
 ## Resultados
+<img width="965" height="192" alt="image" src="https://github.com/user-attachments/assets/52cad104-9c89-4119-b7cc-a99ede60670c" />
+<img width="974" height="280" alt="image" src="https://github.com/user-attachments/assets/07b4b4ec-8c45-445a-b734-abaa47c7de52" />
+<img width="1144" height="185" alt="image" src="https://github.com/user-attachments/assets/08dde3cf-72d3-4365-a45c-8b65a121e849" />
+<img width="1321" height="515" alt="image" src="https://github.com/user-attachments/assets/4b0a4508-59a4-4809-ac47-b550c1be80e3" />
+
+
+
 
 ---
 
