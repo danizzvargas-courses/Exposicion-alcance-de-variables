@@ -143,6 +143,14 @@ copyin(contador)
 
 ## Conclusiones
 
+Al trabajar con hilos en paralelo, la pregunta más importante no es cuántos hilos usar, sino qué pasa con las variables cuando varios hilos corren al mismo tiempo.
+
+`private`, `firstprivate` y `lastprivate` resuelven eso dentro de una región paralela: la primera da una copia sin valor, la segunda la entrega ya inicializada, y la tercera se asegura de que el resultado de la última iteración no se pierda. Son pequeñas decisiones que cambian completamente el comportamiento del programa.
+
+`threadprivate` va un paso más allá. En lugar de pensar región por región, le da a cada hilo su propio espacio permanente en una variable global. Eso significa que un hilo puede acumular, contar o guardar información a lo largo de todo el programa sin interferir con los demás, y sin perder lo que tenía al entrar a una nueva región paralela.
+
+Lo más valioso de estudiar esto es entender que los errores en programación paralela rara vez gritan: no hay un mensaje de error, el programa simplemente da resultados incorrectos. Saber exactamente cómo se comporta cada variable con cada cláusula o directiva es lo que separa un programa paralelo correcto de uno que funciona "casi siempre".
+
 ---
 
 ## Referencias
