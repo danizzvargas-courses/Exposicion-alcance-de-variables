@@ -86,3 +86,8 @@ A diferencia de las anteriores, que actúan sobre regiones paralelas específica
 
 ## Referencias
 
+OpenMP. (s/f). Hpc-Wiki.Info. Recuperado el 26 de mayo de 2026, de https://hpc-wiki.info/hpc/OpenMP
+OpenMP: For. (s/f). Jakascorner.com. Recuperado el 26 de mayo de 2026, de http://jakascorner.com/blog/2016/05/omp-for.html
+TylerMSFT. (s/f). 2. Directivas. Microsoft.com. Recuperado el 26 de mayo de 2026, de https://learn.microsoft.com/es-es/cpp/parallel/openmp/2-directives?view=msvc-170
+XL Fortran for AIX. (2023, julio 13). Ibm.com. https://www.ibm.com/docs/es/xl-fortran-aix/16.1.0?topic=fortran-routines-openmp
+
