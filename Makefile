@@ -1,6 +1,13 @@
-CC      = clang
-CFLAGS  = -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include
-LDFLAGS = -L/opt/homebrew/opt/libomp/lib -lomp
+CC      ?= gcc
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Darwin)
+  CFLAGS  = -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include
+  LDFLAGS = -L/opt/homebrew/opt/libomp/lib -lomp
+else
+  CFLAGS  = -fopenmp
+  LDFLAGS = -fopenmp
+endif
 
 all: ThreadPrivate FirstPrivate LastPrivate
 

@@ -6,16 +6,16 @@ int main(void) {
 
     printf("Valor inicial fuera de la región paralela: last = %d\n", last);
 
-    // lastprivate: cada hilo tiene su copia local, pero al final
-    // se guarda el valor de la última iteración en la variable original.
+    // lastprivate: crea copias locales y exporta el valor de la iteración final (i=7) al terminar
     #pragma omp parallel for lastprivate(last)
     for (int i = 0; i < 8; ++i) {
-        last = i; // cada hilo actualiza su copia local de last
+        // Cada hilo modifica su propia copia privada de 'last'
+        last = i; 
         printf("Hilo %d procesando iteración %d, last(private) = %d\n",
                omp_get_thread_num(), i, last);
     }
 
-    // El valor original se actualiza con la última iteración después de la región.
+    // Al salir, 'last' conserva el valor de la iteración lógicamente última, no necesariamente del último hilo en terminar
     printf("Después de la región paralela: last = %d\n", last);
     return 0;
 }
