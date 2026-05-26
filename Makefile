@@ -22,5 +22,10 @@ run-first: FirstPrivate
 run-last: LastPrivate
 	./LastPrivate
 
+run-tests:
+	gcc -fopenmp test/test.c -o test_runner && ./test_runner
+	rm -f test_runner LastPrivate_test FirstPrivate_test ThreadPrivate_test
+
 clean:
-	rm -f ThreadPrivate FirstPrivate LastPrivate
+	rm -f ThreadPrivate FirstPrivate LastPrivate test_runner \
+	      LastPrivate_test FirstPrivate_test ThreadPrivate_test

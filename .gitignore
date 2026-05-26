@@ -1,5 +1,6 @@
 pruebas
 test_runner
+*_test
 *.o
 *.out
 bin/
