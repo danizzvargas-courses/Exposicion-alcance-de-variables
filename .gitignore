@@ -2,3 +2,7 @@ pruebas
 test_runner
 *.o
 *.out
+bin/
+ThreadPrivate
+FirstPrivate
+LastPrivate
